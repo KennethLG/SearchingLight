@@ -132,6 +132,7 @@ main{
   grid-column: 1/3;
   justify-self: center;
   align-self: center;
+  outline-style: none;
 }
 
 .register_paragraph{
@@ -143,10 +144,18 @@ main{
 
 }
 
+.link_buttonContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .register_button{
+  justify-self: center;
   width: 70%;
   height: 60%;
-  justify-self: center;
   background-color: #390e4a;
   color: white;
   border-top: 2px solid #9e16a2;

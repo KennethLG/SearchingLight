@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom';
 export default function Play(){
     return(
         <div>
-            <Redirect to="/register"></Redirect>
+            <Redirect to="/login"></Redirect>
         </div>
     )
 }
