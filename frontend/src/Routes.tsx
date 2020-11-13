@@ -33,7 +33,7 @@ export default function Routes(){
           <Home/>
         </Route>
         <Route exact path="/play">
-          <Play/>
+          <Play Pattern = {{state, setState}}/>
         </Route>
         <Route exact path="/login">
           <Login Pattern={{state, setState}}/>
