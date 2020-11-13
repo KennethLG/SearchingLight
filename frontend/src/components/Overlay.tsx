@@ -5,8 +5,12 @@ export default function Overlay(props:any){
     const onChange = (ev:React.ChangeEvent<HTMLInputElement>) => {
         props.setState({
             ...props.state,
-            code : ev.target.value,
+            account : {
+                ...props.state.account,
+                code : ev.target.value
+            }
         });
+        console.log(props.state, props.setState);
     }
 
 

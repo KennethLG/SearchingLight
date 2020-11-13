@@ -2,24 +2,49 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default function Login(){
+interface Account {
+    email: String;
+    psw : String;
+}
 
-    const [state, setState] = useState<Object>({
-        email : "",
-        psw : ""
+interface State {
+    account: Account;
+    msg : String;
+}
+
+export default function Login(props: any){
+
+    const [state, setState] = useState<State>({
+        account: {
+            email : "",
+            psw : "",
+        },
+        msg : ""
     });
 
     const onChange = (ev:React.ChangeEvent<HTMLInputElement>) =>{
         setState({
             ...state,
-            [ev.target.name] : ev.target.value,
+            account: {
+                ...state.account,
+                [ev.target.name]: ev.target.value
+            }
         });
     }
 
     const onSubmit = async (ev:any) => {
         ev.preventDefault();
-        const response:any = await axios.post('http://localhost:4000/login', state);
-        console.log(response);
+        const response:any = await axios.post('http://localhost:4000/login', state.account);
+        if (typeof(response.data) === "object") {
+            props.Pattern.setState({
+                user : response.data.res,
+                profile: {
+                    logged : true
+                }
+            });
+        } else {
+            setState({...state, msg : response.data}); 
+        }
     }
         
 
@@ -29,7 +54,7 @@ export default function Login(){
                 <form onSubmit={onSubmit} className="register_form">
 
                     <label className="register_label">Correo:</label>    
-                    <input type="text" name="email" className="register_input" onChange={onChange}/>
+                    <input type="email" name="email" className="register_input" onChange={onChange}/>
                     <label className="register_label">Contraseña:</label>    
                     <input type="password" name="psw" className="register_input" onChange={onChange}/>
 
@@ -39,9 +64,9 @@ export default function Login(){
                     <Link to="/register" className="link_buttonContainer">
                         <button className="login_button">Registrar</button>
                     </Link>
-                    
 
-                </form>  
+                    <p className="register_label alert">{state.msg}</p>
+                </form>
             </div>
         </section>
     )

@@ -38,8 +38,9 @@ router.post("/signin" , async (req, res) => {
 			clearTimeout(time);
 			time = setTimeout(() => {timer(data)}, timeout);
 			console.log("codigo actualizado", data.code);
+			res.json("verification code sended");
 		} else if (findUser.status === "registered") {
-			res.json("registered");
+			res.json("The user is already exists");
 		}
 	} else {
 		data.code = createCode();
@@ -49,7 +50,7 @@ router.post("/signin" , async (req, res) => {
 		time = setTimeout(() => {timer(data)}, timeout);
 		await user.save();
 		console.log("registrado", user);
-		res.json("sended");
+		res.json("verification code sended");
 	}
 });
 
@@ -71,10 +72,10 @@ router.post("/login", async (req, res) => {
 		if (data.psw == findUser.psw) {
 			res.json({res: findUser});
 		} else {
-			res.json({res: "error"});
+			res.json("Email and/or password wrongs");
 		}
 	} else {
-		res.json({res: "not found"});
+		res.json("not found");
 	}
 });
 
