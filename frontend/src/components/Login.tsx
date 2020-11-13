@@ -23,10 +23,10 @@ export default function Login(){
                     <input type="password" name="pwd" className="register_input"/>
 
                     <p className="register_paragraph">¿Aun no tienes cuenta?</p>
-                    <input type="submit" value="Ingresar"  className="register_button"/>
+                    <input type="submit" value="Ingresar"  className="login_button"/>
 
                     <Link to="/register" className="link_buttonContainer">
-                        <button className="register_button">Registrar</button>
+                        <button className="login_button">Registrar</button>
                     </Link>
                     
 
