@@ -64,7 +64,7 @@ router.post("/verificate", async(req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-	const data = req.body.state;
+	const data = req.body;
 	const findUser:any = await User.findOne({email: data.email});
 	console.log(data, findUser);
 	if (findUser) {

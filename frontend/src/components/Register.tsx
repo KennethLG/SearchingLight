@@ -33,21 +33,27 @@ export default function Register(){
         // console.log(state);
     };
 
-    const showOverlay = () =>{
-        if (overlay === "overlayOff") {
+    const showOverlay = async () => {
+        if (overlay === "overlayOff" && state.email && state.psw) {
             setOverlay("overlayOn");
         }
-        else{
+        else if(state.code){
             setOverlay("overlayOff");
+            const response:any = await axios.post('http://localhost:4000/verificate', {
+                code : state.code,
+                user : state
+            })
+            console.log(response);
+            
         }
     }
 
     const onSubmit = async (ev:React.FormEvent<HTMLFormElement>) => {
         ev.preventDefault();
         console.log(state)
-        showOverlay();
         const response:any = await axios.post('http://localhost:4000/signin', state)
         console.log(response);
+        showOverlay();
 
     }
 
@@ -73,7 +79,7 @@ export default function Register(){
                 </form>  
             </div>
         </section>
-        <Overlay overlay={overlay} showOverlay = {showOverlay}/>
+        <Overlay overlay={overlay} showOverlay = {showOverlay} setState={setState} state = {state}/>
         </>
     )
 
