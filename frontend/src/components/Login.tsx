@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
+import { stat } from 'fs';
 
 interface Account {
     email: String;
@@ -21,6 +23,7 @@ export default function Login(props: any){
         },
         msg : ""
     });
+    const [redirect, setRedirect] = useState(<div></div>);
 
     const onChange = (ev:React.ChangeEvent<HTMLInputElement>) =>{
         setState({
@@ -32,23 +35,36 @@ export default function Login(props: any){
         });
     }
 
+
     const onSubmit = async (ev:any) => {
         ev.preventDefault();
-        const response:any = await axios.post('http://localhost:4000/login', state.account);
-        if (typeof(response.data) === "object") {
-            props.Pattern.setState({
-                user : response.data.res,
-                profile: {
-                    logged : true
-                }
-            });
-        } else {
-            setState({...state, msg : response.data}); 
+        if (state.account.email !== "" && state.account.psw !== "") {     
+
+            const response:any = await axios.post('http://localhost:4000/login', state.account);
+            if (typeof(response.data) === "object") {
+                props.Pattern.setState({
+                    user : response.data.res,
+                    profile: {
+                        logged : true
+                    }
+                });
+                setRedirect(<Redirect to="/play"></Redirect>);
+
+            } else {
+                setState({...state, msg : response.data}); 
+            }
+        }
+        
+        else{
+            setState({...state, msg : "You must to complete the camps email and password"}); 
         }
     }
+    
+
         
 
     return(
+        <>
         <section className="register">
             <div className="register_card">
                 <form onSubmit={onSubmit} className="register_form">
@@ -69,5 +85,7 @@ export default function Login(props: any){
                 </form>
             </div>
         </section>
+        {redirect}
+        </>
     )
 }

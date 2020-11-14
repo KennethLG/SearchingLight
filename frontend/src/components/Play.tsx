@@ -1,12 +1,11 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import PlayContent from './PlayContent';
 
 
 export default function Play(props:any){
 
     const play:any = () => {
-
-      
         if (props.Pattern.state.profile.logged) {
             return(
                 <div></div>
@@ -20,8 +19,9 @@ export default function Play(props:any){
     }
     
     return(
-        <div>
+        <div className="play_container">
             {play()}
+            <PlayContent/>
         </div>
     )
 }
