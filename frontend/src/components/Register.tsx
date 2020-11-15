@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Overlay from './Overlay';
 
-
-
 interface Account{
-
     email:String ,
     user :String ,
     psw : String,
@@ -26,7 +23,7 @@ export default function Register(){
             user : "",
             psw : "",
             code : "",
-            status : "pending"
+            status : "pending",
         },
         msg : ""
     });
@@ -37,7 +34,7 @@ export default function Register(){
             ...state,
             account : {
                 ...state.account,
-                [ev.target.name] : ev.target.value,
+                [ev.target.name] : ev.target.value
             }
         });
         // console.log(state);
@@ -86,7 +83,7 @@ export default function Register(){
                     <label className="register_label">Contraseña:</label>    
                     <input type="password" name="psw" className="register_input" onChange={onChange}/> 
 
-                    <button className="register_button" >Registrarse</button>
+                    <button className="register_button">Registrarse</button>
 
                     <p className="register_label alert">{state.msg}</p>
                     

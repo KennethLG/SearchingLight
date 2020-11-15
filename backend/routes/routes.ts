@@ -17,7 +17,6 @@ async function timer(data:any) {
 	await User.deleteOne({email: data.email});
 	console.log("user eliminated");
 }
-
 router.get("/api/users", async (req:any, res:any) => {
 	const data:object = await User.find();
 	res.json(data);
@@ -33,7 +32,6 @@ router.post("/signin" , async (req, res) => {
 		if (findUser.status === "pending") {
 			data.code = createCode();
 			sendEmail(data);
-
 			await User.updateOne({email: data.email}, {code: data.code});
 			clearTimeout(time);
 			time = setTimeout(() => {timer(data)}, timeout);
@@ -61,6 +59,8 @@ router.post("/verificate", async(req, res) => {
 		clearTimeout(time);
 		await User.updateOne({email: user.email}, {status: "registered"});
 		res.json(verUser);
+	} else {
+		res.json("Code wrong");
 	}
 });
 
