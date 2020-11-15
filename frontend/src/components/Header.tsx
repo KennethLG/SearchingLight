@@ -7,14 +7,18 @@ export default function Header(){
         <header>
             <div className="header_container">
                 <ul>
-                    <Link to="/" className="header_play">
-                        <li className="logo">Logo</li>
+                    <Link to="/" className="header_home logo" >
+                        <li>Home</li>
                     </Link>
-                    <Link to="/play" className="header_play">
+                    <Link to="/play" className="header_play logo">
                         <li>Play</li>
                     </Link>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <Link to="/" className="header_about logo">
+                        <li>About</li>
+                    </Link>
+                    <Link to="/" className="header_contact logo">
+                        <li>Contact</li>
+                    </Link>
                 </ul>
             </div>
         </header>

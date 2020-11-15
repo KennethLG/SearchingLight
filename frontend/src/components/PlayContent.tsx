@@ -1,5 +1,6 @@
 import React from 'react';
 import img1 from '../assets/img1.jpeg'
+import img2 from '../assets/images/SLBG2.jpg'
 import xbox from '../assets/xbox_logo.png'
 import ps4 from '../assets/ps4_logo.png'
 import playstore from '../assets/playstore_logo.png'
@@ -26,7 +27,7 @@ export default function PlayContent(){
             <h1 className="play_title">Searching light</h1>
             <div className="play_cards">
                 <div className="play_card">
-                    <img src={img1} alt="imagen left"/>
+                    <img src={img2} alt="imagen left"/>
                     <div className="play_description right">
                         <p>Play a demo now!!</p>
                     </div>
