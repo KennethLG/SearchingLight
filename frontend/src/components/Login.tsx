@@ -65,7 +65,7 @@ export default function Login(props: any){
 
     return(
         <>
-        <section className="register">
+        <section className="login">
             <div className="register_card">
                 <form onSubmit={onSubmit} className="register_form">
 
