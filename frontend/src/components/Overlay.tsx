@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Overlay(props:any){
-
     const onChange = (ev:React.ChangeEvent<HTMLInputElement>) => {
         props.setState({
             ...props.state,
@@ -12,7 +11,6 @@ export default function Overlay(props:any){
         });
         console.log(props.state, props.setState);
     }
-
 
     return(
         <div className={props.overlay}>

@@ -13,10 +13,10 @@ export default function Header(){
                     <Link to="/play" className="header_play logo">
                         <li>Play</li>
                     </Link>
-                    <Link to="/" className="header_about logo">
+                    <Link to="/about" className="header_about logo">
                         <li>About</li>
                     </Link>
-                    <Link to="/" className="header_contact logo">
+                    <Link to="/contact" className="header_contact logo">
                         <li>Contact</li>
                     </Link>
                 </ul>

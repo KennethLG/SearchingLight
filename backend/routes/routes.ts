@@ -1,6 +1,7 @@
 import {Router} from "express";
 import User from "../DB/User";
 import sendEmail from "../services/sendEmail";
+import sendEmailContact from "../services/sendEmailContact";
 
 const router:Router = Router();
 
@@ -22,7 +23,7 @@ router.get("/api/users", async (req:any, res:any) => {
 	res.json(data);
 });
 
-router.post("/signin" , async (req, res) => {
+router.post("/signin" , async (req:any, res:any) => {
 	let data = req.body;
 	const findUser:any = await User.findOne({email: data.email});
 
@@ -52,7 +53,7 @@ router.post("/signin" , async (req, res) => {
 	}
 });
 
-router.post("/verificate", async(req, res) => {
+router.post("/verificate", async (req:any, res:any) => {
 	const {code, user} = req.body;
 	const verUser:any = await User.findOne({email: user.email});
 	if (verUser.code == code) {
@@ -64,7 +65,7 @@ router.post("/verificate", async(req, res) => {
 	}
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req:any, res:any) => {
 	const data = req.body;
 	const findUser:any = await User.findOne({email: data.email});
 	console.log(data, findUser);
@@ -77,6 +78,12 @@ router.post("/login", async (req, res) => {
 	} else {
 		res.json("not found");
 	}
+});
+
+router.post("/contact", async (req:any, res:any) => {
+	const data = req.body;
+	sendEmailContact(data);
+	res.json("Email sent");
 });
 
 export default router;

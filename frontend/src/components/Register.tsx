@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Redirect} from "react-router-dom";
 import axios from 'axios';
 import Overlay from './Overlay';
 
@@ -15,7 +16,7 @@ interface State {
     msg : String
 }
 
-export default function Register(){
+export default function Register(props: any){
 
     const [state, setState] = useState<State>({
         account: {
@@ -28,6 +29,7 @@ export default function Register(){
         msg : ""
     });
     const [overlay,setOverlay] = useState("overlayOff");
+    const [redirect, setRedirect] = useState(<div></div>);
 
     const onChange = (ev:React.ChangeEvent<HTMLInputElement>) =>{
         setState({
@@ -49,7 +51,19 @@ export default function Register(){
                 code : state.account.code,
                 user : state.account
             });
+            if (typeof(response.data) === "object") {
+                props.Pattern.setState({
+                    user : response.data,
+                    profile: {
+                        logged : true
+                    }
+                });
+                setRedirect(<Redirect to="/play"></Redirect>);
+            } else {
+                setState({...state, msg: response.data});
+            }
             console.log(response);
+
         } else {
             alert("Please, write the verification code");
         }
@@ -60,7 +74,7 @@ export default function Register(){
         if (state.account.email !== "" && state.account.user !== "" && state.account.psw !== "") {
             console.log(state)
             const response:any = await axios.post('http://localhost:4000/signin', state.account)
-            setState({...state, msg: state.msg});
+            setState({...state, msg: response.data});
             if (response.data === "verification code sended") showOverlay();
             console.log(state, response.data);
         } else {
@@ -92,6 +106,7 @@ export default function Register(){
             </div>
         </section>
         <Overlay overlay={overlay} showOverlay = {showOverlay} setState={setState} state={state}/>
+        {redirect}
         </>
     )
 
