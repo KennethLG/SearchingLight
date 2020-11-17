@@ -5,6 +5,8 @@ import Home from './components/Home'
 import Play from './components/Play';
 import Login from './components/Login';
 import Register from './components/Register';
+import About from "./components/About";
+import Contact from "./components/Contact";
 
 interface Profile {
   logged : Boolean;
@@ -39,7 +41,13 @@ export default function Routes(){
           <Login Pattern={{state, setState}}/>
         </Route>
         <Route exact path="/register">
-          <Register/>
+          <Register Pattern={{state, setState}}/>
+        </Route>
+        <Route exact path="/about">
+          <About/>
+        </Route>
+        <Route exact path="/contact">
+          <Contact Pattern={{state, setState}}/>
         </Route>
         </>
     )
