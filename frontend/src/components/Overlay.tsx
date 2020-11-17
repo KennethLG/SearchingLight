@@ -16,9 +16,9 @@ export default function Overlay(props:any){
         <div className={props.overlay}>
             <div className="overlay_card">
                 <h2 className="overlay_title">Code:</h2>
-                <p className="overlay_paragraph">Revisa tu correo</p>
+                <p className="overlay_paragraph">Check your email<br/>verification code expires in 2 minutes</p>
                 <input type="text" className="overlay_input" onChange={onChange}/>
-                <button className="ovelay_button" onClick={props.showOverlay}>Confirmar</button>
+                <button className="ovelay_button" onClick={props.showOverlay}>Confirm</button>
             </div>
         </div>
     )

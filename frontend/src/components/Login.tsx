@@ -69,16 +69,16 @@ export default function Login(props: any){
             <div className="register_card">
                 <form onSubmit={onSubmit} className="register_form">
 
-                    <label className="register_label">Correo:</label>    
+                    <label className="register_label">Email</label>    
                     <input type="email" name="email" className="register_input" onChange={onChange}/>
-                    <label className="register_label">Contraseña:</label>    
+                    <label className="register_label">Password</label>    
                     <input type="password" name="psw" className="register_input" onChange={onChange}/>
 
-                    <p className="register_paragraph">¿Aun no tienes cuenta?</p>
+                    <p className="register_paragraph">Do not have an account yet?</p>
                     <input type="submit" value="Ingresar"  className="login_button"/>
 
                     <Link to="/register" className="link_buttonContainer">
-                        <button className="login_button">Registrar</button>
+                        <button className="register2">Sign in</button>
                     </Link>
 
                     <p className="register_label alert">{state.msg}</p>

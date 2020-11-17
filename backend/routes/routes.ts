@@ -27,29 +27,33 @@ router.post("/signin" , async (req:any, res:any) => {
 	let data = req.body;
 	const findUser:any = await User.findOne({email: data.email});
 
-	const timeout: number = 30000;
+	const timeout: number = 120000;
 
-	if (findUser) {
-		if (findUser.status === "pending") {
+	if (data.psw.length >= 8) {
+		if (findUser) {
+			if (findUser.status === "pending") {
+				data.code = createCode();
+				sendEmail(data);
+				await User.updateOne({email: data.email}, {code: data.code});
+				clearTimeout(time);
+				time = setTimeout(() => {timer(data)}, timeout);
+				console.log("codigo actualizado", data.code);
+				res.json("verification code sended");
+			} else if (findUser.status === "registered") {
+				res.json("The user is already exists");
+			}
+		} else {
 			data.code = createCode();
 			sendEmail(data);
-			await User.updateOne({email: data.email}, {code: data.code});
-			clearTimeout(time);
+			
+			const user = new User(data);
 			time = setTimeout(() => {timer(data)}, timeout);
-			console.log("codigo actualizado", data.code);
+			await user.save();
+			console.log("registrado", user);
 			res.json("verification code sended");
-		} else if (findUser.status === "registered") {
-			res.json("The user is already exists");
-		}
+		}	
 	} else {
-		data.code = createCode();
-		sendEmail(data);
-		
-		const user = new User(data);
-		time = setTimeout(() => {timer(data)}, timeout);
-		await user.save();
-		console.log("registrado", user);
-		res.json("verification code sended");
+		res.json("Password must contain more than 8 characters");
 	}
 });
 

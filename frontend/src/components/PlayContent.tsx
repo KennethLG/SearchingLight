@@ -8,7 +8,6 @@ import steam from '../assets/steam_logo.png'
 import switchL from '../assets/switch_logo.png'
 import appstore from '../assets/appstore_logo.png'
 
-
 export default function PlayContent(){
 
     const platforms = [xbox, ps4, playstore, steam, switchL, appstore];
@@ -21,22 +20,23 @@ export default function PlayContent(){
         )
     })
 
-
     return(
         <div className="play">
-            <h1 className="play_title">Searching light</h1>
+            <h1 className="play_title">Searching Light</h1>
             <div className="play_cards">
                 <div className="play_card">
                     <img src={img2} alt="imagen left"/>
                     <div className="play_description right">
-                        <p>Play a demo now!!</p>
+                        <p>Play a Searching Light demo!</p>
+                        <button className="buttonContact">Download</button>
                     </div>
                 </div>
+
                 <div className="play_card">
-                    <img src={img1} alt="imagen right"/>
                     <div className="play_description left">
-                        <p>Buy Searching Light Now</p>
+                        <p>Buy Searching Light now in the followings platforms!</p>
                     </div>
+                    <img src={img1} alt="imagen right"/>
                 </div>
             </div>
             <div className="play_platforms">

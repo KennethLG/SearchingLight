@@ -91,13 +91,13 @@ export default function Register(props: any){
                     <label className="register_label">Username</label>    
                     <input type="text" name="user" className="register_input" onChange={onChange}/>
 
-                    <label className="register_label">Correo:</label>    
+                    <label className="register_label">Email</label>    
                     <input type="email" name="email" className="register_input" onChange={onChange}/>
 
-                    <label className="register_label">Contraseña:</label>    
+                    <label className="register_label">Password</label>    
                     <input type="password" name="psw" className="register_input" onChange={onChange}/> 
 
-                    <button className="register_button">Registrarse</button>
+                    <button className="register_button">Sign in</button>
 
                     <p className="register_label alert">{state.msg}</p>
                     

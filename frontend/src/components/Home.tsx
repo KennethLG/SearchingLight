@@ -1,17 +1,19 @@
 import React from 'react';
-import img1 from '../assets/images/bg4.png'
-import img2 from '../assets/images/bg5.png'
-
-
+import img1 from '../assets/images/bg4.png';
+import img2 from '../assets/images/bg5.png';
+import homeImg from "../assets/images/searchingLightBG.jpg";
 
 export default function Home(){
 
 
     return(
         <div className="home">
-            <div className="homeImg"></div>
-            <main className="container">
-            <h1 className="info_title">Discover the new world</h1>
+            <div className="head">
+                <img src={homeImg} className="homeImg"/>
+                <div className="TITLE">Searching Light</div>
+            </div>
+            <main className="container"><br/><br/>
+            <h1 className="info_title shadow">Explore the boy's beautiful nightmares with me</h1>
             <section className="info">
                 <div className="info_rowDescription info_gif1">
                     <div className="info_gif left gif1"></div>

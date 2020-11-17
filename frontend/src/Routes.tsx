@@ -21,7 +21,7 @@ export default function Routes(){
     const [state, setState] = useState<State>({
       user: {},
       profile : {
-        logged: true,
+        logged: false,
       }
     });
 
