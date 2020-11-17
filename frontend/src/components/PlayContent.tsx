@@ -33,10 +33,10 @@ export default function PlayContent(){
                     </div>
                 </div>
                 <div className="play_card">
+                    <img src={img1} alt="imagen right"/>
                     <div className="play_description left">
                         <p>Buy Searching Light Now</p>
                     </div>
-                    <img src={img1} alt="imagen right"/>
                 </div>
             </div>
             <div className="play_platforms">

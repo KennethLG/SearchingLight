@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import mariposa from '../assets/Mariposa.jpeg'
 
-export default function Header(){
+export default function Header(){ 
     return(
         <header>
-            <div className="header_container">
+            <div className="header_container" id="menu">
                 <ul>
                     <Link to="/" className="header_home logo" >
                         <li>Home</li>
