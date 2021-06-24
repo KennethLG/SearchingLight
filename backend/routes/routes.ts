@@ -5,7 +5,7 @@ import sendEmailContact from "../services/sendEmailContact";
 
 const router:Router = Router();
 
-let time:any;
+let time:string;
 
 const createCode = ():number => {
 		return parseInt((Math.floor(Math.random()*10)).toString()
